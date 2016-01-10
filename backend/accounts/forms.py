@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 class LoginForm(forms.Form):
 	email = forms.EmailField(
 		label='Email',
+        help_text='user',   # used for the icon, not as help text
 		widget=forms.EmailInput(attrs={
 			'class': 'gui-input',
 			'placeholder': 'Email',
@@ -14,7 +15,8 @@ class LoginForm(forms.Form):
 			'type': 'email'
 		}))
 	password = forms.CharField(
-		label='Email',
+		label='Password',
+        help_text='lock',   # used for the icon, not as help text
 		required=True,
 		widget=forms.PasswordInput(attrs={
 			'class': 'gui-input',
