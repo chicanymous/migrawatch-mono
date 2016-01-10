@@ -6,6 +6,8 @@ from accounts.forms import LoginForm
 
 class LoginView(View):
 	def get(self, request):
+		if request.user.is_authenticated():
+			return redirect('dashboard:home')
 		context = {'form': LoginForm}
 		return render(request, 'dashboard/utility/login.html', context)
 
