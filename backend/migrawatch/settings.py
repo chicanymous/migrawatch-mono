@@ -54,6 +54,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'migrawatch.urls'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {
