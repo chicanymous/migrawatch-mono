@@ -30,3 +30,5 @@ class LogoutView(View):
 		logout(request)
 		return render(request, 'dashboard/utility/logout.html')
 logout_view = LogoutView.as_view()
+
+

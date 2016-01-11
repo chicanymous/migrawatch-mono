@@ -1,0 +1,66 @@
+{% extends "dashboard/home.html" %}
+{% block content %}
+    <div class="pl15 pr50">
+        <h4> Raids Reported by You </h4>
+        <hr class="alt short">
+        <p>
+            These are raids that were reported by you specifically.
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
+                <div class="panel-body pn">
+                    <div class="table-responsive">
+                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                            <thead>
+                                <tr class="bg-light">
+                                    <th class="text-center">Edit</th>
+                                    <th class="text-center">State</th>
+                                    <th class="">City</th>
+                                    <th class="">Zipcode</th>
+                                    <th class="">Address</th>
+                                    <th class=""># of Detainees</th>
+                                    <th class="">Reported By</th>
+                                    <th class="text-right">Verified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for raid in raids %}
+                                    <tr>
+                                        <th class="text-center">
+                                            <a href="{% url 'dashboard:raids_edit' raid_id=raid.id %}">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <th class="text-center">
+                                            <span>{{raid.state}}</span>
+                                        </td>
+                                        <td class="">
+                                            <span>{{raid.city}}</span>
+                                        </td>
+                                        <td class="">
+                                            {{raid.zip_code}}
+                                        </td>
+                                        <td class="">
+                                            <span>{{raid.address}}</span>
+                                        </td>
+                                        <td class="">
+                                            {{raid.detainee_count|default:'NA'}}
+                                        </td>
+                                        <td class="">
+                                            {{raid.reported_by}}
+                                        </td>
+                                        <td class="text-right">
+                                            {{raid.verified}}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

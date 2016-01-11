@@ -1,1 +1,40 @@
 {% extends "dashboard/abstract/base.html" %}
+
+
+{% block sidebar-menu %}
+{% include "dashboard/nav/default.html" %}
+{% endblock sidebar-menu %}
+
+{% block topbar %}
+<div class="topbar-left">
+    <ul class="nav nav-list nav-list-topbar pull-left">
+        <li class="active">
+            <a href="{% url 'dashboard:home' %}">Raids</a>
+        </li>
+        <li>
+            <a href="/dashboard/map/">Map</a>
+        </li>
+        <li>
+            <a href="dashboard/resources/">Resources</a>
+        </li>
+    </ul>
+</div>
+<div class="topbar-right hidden-xs hidden-sm mt5 mr35">
+    <a href="sales-stats-purchases.html" class="btn btn-primary btn-sm ml10" title="Add Raid">
+        <span class="fa fa-plus pr5"></span>
+        <span class="fa fa-file-o pr5"></span>
+    </a>
+</div>
+{% endblock topbar %}
+
+{% block content %}
+    <div class="pl15 pr50">
+    <h4> Latest Raids </h4>
+    <hr class="alt short">
+        <p>
+        The table below contains the most recent set of raids as reported by all participating organizations. You can use the filter dropdowns to fetch data for a specific state, region, or organization.
+        </p>
+        <p>Use <b><a href="{% url 'dashboard:raids_add' %}">this form</a></b> to add a sighting.</p>
+    </div>
+    {% include "dashboard/raids/list.html" %}
+{% endblock content %}

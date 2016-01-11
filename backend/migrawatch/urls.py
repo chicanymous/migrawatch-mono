@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-
+from accounts import views as accounts_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^login/', 'accounts.views.login_view', name='login'),
-    url(r'^logout/', 'accounts.views.logout_view', name='logout'),
+    url(r'^login/', accounts_views.login_view, name='login'),
+    url(r'^logout/', accounts_views.logout_view, name='logout'),
     url(r'^', include('dashboard.urls', namespace='dashboard'))
 ]

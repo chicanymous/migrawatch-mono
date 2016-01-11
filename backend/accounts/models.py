@@ -4,16 +4,6 @@ from django.contrib.auth.models import User
 from common.models import BaseModel
 from common.models import Address
 
-
-class BaseUser(BaseModel, User):
-	''' the base user ''' 
-	phone_number = models.CharField(max_length=11)
-	logins = models.PositiveSmallIntegerField(default=0)
-
-	def __unicode__(self):
-		return this.user.email
-
-
 class Organization(BaseModel):
 	name = models.CharField(max_length=128)
 	phone_number = models.CharField(max_length=11)
@@ -25,8 +15,13 @@ class Organization(BaseModel):
 
 class Member(BaseModel):
 	POSITIONS = [('Member', 'MEMBER'), ('Admin', 'ADMIN')]
-	user = models.ForeignKey(BaseUser)
+	user = models.OneToOneField(User)
+	phone_number = models.CharField(max_length=11, null=True)
+	logins = models.PositiveSmallIntegerField(default=0)
 	position = models.CharField(choices=POSITIONS, default='MEMBER', max_length=16)
+
+	def __unicode__(self):
+		return self.affiliations.first().organization.name + ' member'
 
 	def is_admin(self):
 		return self.position == 'ADMIN'
@@ -37,4 +32,4 @@ class Member(BaseModel):
 
 class Affiliation(BaseModel):
 	organization = models.ForeignKey(Organization)
-	member = models.ForeignKey(Member)
+	member = models.ForeignKey(Member, related_name='affiliations')

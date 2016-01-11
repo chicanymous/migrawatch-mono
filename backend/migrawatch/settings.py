@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'common',
-    'accounts'
+    'accounts',
+    'cartograph'
 ]
 
 MIDDLEWARE_CLASSES = [

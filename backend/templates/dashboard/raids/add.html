@@ -1,0 +1,41 @@
+{% extends "dashboard/home.html" %}
+
+
+{% block content %}
+    <div class="pl15 pr50">
+    <h4> Add a Raid </h4>
+    <hr class="alt short">
+        <p>
+        Use the form on this page to add a raid.
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Add a Raid</div>
+                </div>
+                <div class="panel-body">
+                    {% include "dashboard/raids/partials/form.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block endscripts %}
+    <script src="/static/theme/assets/js/plugins/globalize/globalize.min.js"></script>
+    <script src="/static/theme/assets/js/plugins/moment/moment.min.js"></script>
+    <script src="/static/theme/assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('.date-picker').datetimepicker({
+            pickTime: false
+        });
+        $('.time-picker').datetimepicker({
+            pickDate: false
+        });
+    })
+    </script>
+{% endblock endscripts %}

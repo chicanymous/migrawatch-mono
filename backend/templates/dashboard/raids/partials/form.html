@@ -1,0 +1,70 @@
+<form method="post" class="allcp-form">
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert-warning">
+    <p>
+    <b>There were some errors in your submission. Please correct them and submit the form again.</b>
+    </p>
+    {{form.errors}}
+    </div>
+    {% endif %}
+    <div class="section">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="State" class="field select">
+                    {{form.state.label}}
+                    {{form.state}}
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label for="City" class="field">
+                    {{form.city.label}}
+                    {{form.city}}
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label for="Zip Code" class="field">
+                    {{form.zip_code.label}}
+                    {{form.zip_code}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="Date" class="field">
+                    {{form.date}}
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label for="Time" class="field">
+                    {{form.time}}
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label for="Detainee count" class="field">
+                    {{form.detainee_count}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="Notes" class="field">
+                    {{form.notes}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div class="col-md-12">
+                {{form.reportee}}
+                {{form.reported_by}}
+                <button type="submit" class="btn btn-lg btn-bordered btn-primary pull-right">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>

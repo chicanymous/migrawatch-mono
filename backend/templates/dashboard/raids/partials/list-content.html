@@ -1,0 +1,85 @@
+<!-- -------------- Filters and Stuff -------------- -->
+<div class="panel-menu p12 allcp-form theme-primary mtn">
+    <div class="row">
+        <div class="col-md-2 pb5">
+            <label class="field select">
+                <select id="bulk-action" name="bulk-action" class="empty">
+                    <option value="0">Actions</option>
+                    <option value="1">Edit</option>
+                    <option value="2">Delete</option>
+                    <option value="3">Active</option>
+                    <option value="4">Inactive</option>
+                </select>
+                <i class="arrow double"></i>
+            </label>
+        </div>
+        <div class="col-md-5 pb5">
+            <label class="field select">
+                <select id="filter-category" name="filter-category" class="empty">
+                    <option value="0">Filter by State</option>
+                    <option value="1">iPhone</option>
+                    <option value="2">iPad</option>
+                    <option value="3">iMac</option>
+                </select>
+                <i class="arrow"></i>
+            </label>
+        </div>
+        <div class="col-md-5 pb5">
+            <label class="field select">
+                <select id="filter-status" name="filter-status" class="empty">
+                    <option value="0">Filter by Organization</option>
+                    <option value="1">Active</option>
+                    <option value="2">Inactive</option>
+                    <option value="3">Low Stock</option>
+                    <option value="4">Out of Stock</option>
+                </select>
+                <i class="arrow"></i>
+            </label>
+        </div>
+    </div>
+</div>
+<!-- -------------- /Filters and Stuff -------------- -->
+<div class="panel-body pn">
+    <div class="table-responsive">
+        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+            <thead>
+                <tr class="bg-light">
+                    <th class="text-center">State</th>
+                    <th class="">City</th>
+                    <th class="">Zipcode</th>
+                    <th class="">Address</th>
+                    <th class=""># of Detainees</th>
+                    <th class="">Reported By</th>
+                    <th class="text-right">Verified</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for raid in raids %}
+                    <tr>
+                        <th class="text-center">
+                            <span>{{raid.state}}</span>
+                        </td>
+                        <td class="">
+                            <span>{{raid.city}}</span>
+                        </td>
+                        <td class="">
+                            {{raid.zip_code}}
+                        </td>
+                        <td class="">
+                            <span>{{raid.address}}</span>
+                        </td>
+                        <td class="">
+                            {{raid.detainee_count|default:'NA'}}
+                        </td>
+                        <td class="">
+                            {{raid.reported_by}}
+                        </td>
+                        <td class="text-right">
+                            {{raid.verified}}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
