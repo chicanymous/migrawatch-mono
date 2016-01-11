@@ -22,5 +22,7 @@ urlpatterns = [
 
     url(r'^login/', accounts_views.login_view, name='login'),
     url(r'^logout/', accounts_views.logout_view, name='logout'),
-    url(r'^', include('dashboard.urls', namespace='dashboard'))
+    url(r'^', include('dashboard.urls', namespace='dashboard')),
+    url(r'^', include('cartograph.urls', namespace='cartograph'))
+
 ]
